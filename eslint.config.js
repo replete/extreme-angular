@@ -3,6 +3,7 @@ import vitest from "@vitest/eslint-plugin";
 import { configs as ngConfigs, processInlineTemplates } from "angular-eslint";
 import prettierConfig from "eslint-config-prettier";
 import { configs as jsoncConfigs } from "eslint-plugin-jsonc";
+import playwright from "eslint-plugin-playwright";
 import globals from "globals";
 import { config, configs as tsConfigs } from "typescript-eslint";
 
@@ -90,6 +91,23 @@ export default config(
     settings: {
       vitest: {
         typecheck: true,
+      },
+    },
+    rules: {},
+  },
+  {
+    files: ["e2e/**/*.e2e.test.ts"],
+    extends: [
+      eslint.configs.recommended,
+      ...tsConfigs.strictTypeChecked,
+      ...tsConfigs.stylisticTypeChecked,
+      playwright.configs["flat/recommended"],
+      prettierConfig,
+    ],
+    languageOptions: {
+      parserOptions: {
+        projectService: true,
+        tsconfigRootDir: import.meta.dirname,
       },
     },
     rules: {},

@@ -120,7 +120,7 @@ npm run lint:tsc:all  # Check all TypeScript files
 
 ### ESLint
 
-[ESLint](https://eslint.org/) is used for linting JavaScript, TypeScript, HTML, and JSON files in the project. The linting configuration is set in [eslint.config.js](./eslint.config.js), with specific overrides for the following file types: `*.js`, `*.ts`, `*.spec.ts`, `*.html`, and `*.json`.
+[ESLint](https://eslint.org/) is used for linting JavaScript, TypeScript, HTML, and JSON files in the project. The linting configuration is set in [eslint.config.js](./eslint.config.js), with specific overrides for the following file types: `*.js`, `*.ts`, `*.spec.ts`, `*.e2e.test.ts`, `*.html`, and `*.json`.
 
 To ensure effective linting for all project files, the following ESLint plugins are used:
 
@@ -134,6 +134,9 @@ To ensure effective linting for all project files, the following ESLint plugins 
 - [@vitest/eslint-plugin](https://github.com/vitest-dev/eslint-plugin-vitest)
   - Uses `recommended` rule set for Vitest test files.
   - [@vitest/eslint-plugin rules](https://github.com/vitest-dev/eslint-plugin-vitest#rules).
+- [eslint-plugin-playwright](https://github.com/playwright-community/eslint-plugin-playwright)
+  - Uses `recommended` rule set for Playwright e2e test files.
+  - [eslint-plugin-playwright rules](https://github.com/playwright-community/eslint-plugin-playwright#rules).
 - [eslint-plugin-jsonc](https://github.com/ota-meshi/eslint-plugin-jsonc)
   - Uses `recommended` rule set.
   - [eslint-plugin-jsonc rules configuration matrix](https://ota-meshi.github.io/eslint-plugin-jsonc/rules/).
