@@ -3,5 +3,7 @@
   "**/*.{css,scss}": "stylelint",
   "**/*.{js,ts,css,scss,sh,html,md,json,yaml,yml}": "prettier --write --log-level warn",
   "**/*.{js,ts,sh,html,md}": "cspell --quiet",
-  "**/*.ts": "tsc-files --noEmit"
+  "src/**/*.ts": "tsc-files --noEmit",
+  "{e2e,playwright}/**/*.ts": "tsc-files --noEmit -p tsconfig.e2e.json",
+  "playwright.config.ts": "tsc-files --noEmit -p tsconfig.e2e.json"
 }

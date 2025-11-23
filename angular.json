@@ -79,6 +79,17 @@
           "options": {
             "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
           }
+        },
+        "e2e": {
+          "builder": "playwright-ng-schematics:playwright",
+          "options": {
+            "devServerTarget": "extreme-angular:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "extreme-angular:serve:production"
+            }
+          }
         }
       }
     }
