@@ -83,11 +83,21 @@
         "e2e": {
           "builder": "playwright-ng-schematics:playwright",
           "options": {
-            "devServerTarget": "extreme-angular:serve"
+            "devServerTarget": "extreme-angular:serve",
+            "project": "e2e-chromium"
           },
           "configurations": {
             "production": {
               "devServerTarget": "extreme-angular:serve:production"
+            },
+            "all": {
+              "project": "e2e-*"
+            },
+            "firefox": {
+              "project": "e2e-firefox"
+            },
+            "webkit": {
+              "project": "e2e-webkit"
             }
           }
         }

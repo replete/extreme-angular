@@ -7,6 +7,7 @@
     "dbaeumer.vscode-eslint",
     "stylelint.vscode-stylelint",
     "streetsidesoftware.code-spell-checker",
-    "vitest.explorer"
+    "vitest.explorer",
+    "ms-playwright.playwright"
   ]
 }

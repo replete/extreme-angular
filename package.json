@@ -25,7 +25,8 @@
     "ci:all": "npm run lint:all && npm run test:ci",
     "shove": "git config push.autoSetupRemote true && git add . && git commit -m 'wip: shoved' --no-verify && git push --no-verify",
     "prepare": "husky",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "e2e:all": "ng e2e --configuration=all"
   },
   "private": true,
   "dependencies": {

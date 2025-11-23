@@ -36,13 +36,13 @@ Found an issue? Check the [existing issues](https://github.com/joematthews/extre
   - [Prettier](#prettier)
   - [CSpell](#cspell)
   - [Testing](#testing)
+  - [End to End Testing (e2e)](#end-to-end-testing-e2e)
   - [VS Code](#vs-code)
   - [Husky, Commitlint, tsc-files, and Lint-Staged (Git hooks)](#husky-commitlint-tsc-files-and-lint-staged-git-hooks)
   - [Shove Progress](#shove-progress)
   - [Continuous Integration (CI) Using GitHub Actions](#continuous-integration-ci-using-github-actions)
 - [Optional Configuration](#optional-configuration)
   - [Internationalization (i18n)](#internationalization-i18n)
-  - [End to End Testing (e2e)](#end-to-end-testing-e2e)
 - [Tips & Tricks](#tips--tricks)
   - [Custom Formatting](#custom-formatting)
   - [Git Config](#git-config)
@@ -244,8 +244,30 @@ npm run test:ci
 > [!NOTE]
 > Vitest with jsdom is significantly faster than Karma with a real browser. For most unit tests, jsdom provides sufficient DOM simulation. If you need real browser testing, Angular supports running Vitest with Playwright — see the [Angular testing documentation](https://angular.dev/guide/testing).
 
-> [!TIP]
-> For end-to-end testing, see the [End to End Testing (e2e)](#end-to-end-testing-e2e) section under Optional Configuration.
+### End to End Testing (e2e)
+
+[Playwright](https://playwright.dev/) is configured for end-to-end testing via [playwright-ng-schematics](https://github.com/nickvdyck/playwright-ng-schematics), which integrates with the Angular CLI's `ng e2e` workflow.
+
+To run e2e tests (Chromium only, for fast local development):
+
+```sh
+npm run e2e
+```
+
+To run e2e tests across all browsers (Chromium, Firefox, WebKit):
+
+```sh
+npm run e2e:all
+```
+
+To run in a specific browser:
+
+```sh
+ng e2e --configuration=firefox
+ng e2e --configuration=webkit
+```
+
+**Configuration:** Browser projects are defined in [playwright.config.ts](playwright.config.ts) and selected via Angular CLI configurations in [angular.json](angular.json).
 
 ### VS Code
 
@@ -257,7 +279,8 @@ The following VS Code extensions will be recommended when opening the project ([
 - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 - [Stylelint](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint)
 - [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)
-- [Vitest](https://marketplace.visualstudio.com/items?itemName=vitest.explorer) — Run and debug tests from the Test Explorer sidebar
+- [Vitest](https://marketplace.visualstudio.com/items?itemName=vitest.explorer) — Run and debug unit tests from the Test Explorer sidebar
+- [Playwright Test](https://marketplace.visualstudio.com/items?itemName=ms-playwright.playwright) — Run and debug e2e tests from the Test Explorer sidebar
 
 The following VS Code settings have been set in [.vscode/settings.json](.vscode/settings.json):
 
@@ -323,24 +346,6 @@ To enable the i18n ESLint rule, simply add the following rule to the \*.html sec
 
 > [!TIP]
 > Using `eslint --fix` can automatically add i18n tags in many cases.
-
-## End to End Testing (e2e)
-
-Angular has schematics available for several end to end testing frameworks. The [Angular End to End Testing guide](https://angular.dev/tools/cli/end-to-end) will walk you through the steps to set one up.
-
-The [eslint-plugin-playwright](https://github.com/playwright-community/eslint-plugin-playwright) package has rules for the popular [Playwright](https://playwright.dev/) framework. To incorporate these rules, import the plugin in the [eslint.config.js](eslint.config.js) file and then add a new config object that targets `e2e/**/*.spec.ts` files:
-
-```js
-import { playwright } from "eslint-plugin-playwright";
-```
-
-```js
-  {
-    files: ['e2e/**/*.spec.ts'],
-    extends: [...playwright.configs['flat/recommended'], prettierConfig],
-    rules: { ...playwright.configs['flat/recommended'].rules },
-  },
-```
 
 ## Tips & Tricks
 
