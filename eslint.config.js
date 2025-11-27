@@ -8,7 +8,7 @@ import globals from "globals";
 import { config, configs as tsConfigs } from "typescript-eslint";
 
 export default config(
-  { ignores: [".angular/*", "dist/*"] },
+  { ignores: [".angular/*", ".playwright/*", "dist/*"] },
   {
     files: ["**/*.js"],
     extends: [eslint.configs.recommended, prettierConfig],
