@@ -43,5 +43,4 @@ testem.log
 Thumbs.db
 
 # Playwright
-/e2e-test-results
-/e2e-report
+/.playwright

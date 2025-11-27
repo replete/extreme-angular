@@ -5,12 +5,12 @@ const CI = !!process.env['CI'];
 // https://playwright.dev/docs/test-configuration.
 export default defineConfig({
   testMatch: '**/*.e2e.test.ts',
-  outputDir: './e2e-test-results',
+  outputDir: './.playwright/e2e-test-results',
   fullyParallel: true,
   forbidOnly: CI, // fail if test.only() exists in CI
   retries: CI ? 2 : 0,
   ...(CI ? { workers: 1 } : {}),
-  reporter: [['html', { outputFolder: './e2e-report' }]],
+  reporter: [['html', { outputFolder: './.playwright/e2e-report' }]],
   use: {
     baseURL: process.env['PLAYWRIGHT_TEST_BASE_URL'] ?? 'http://localhost:4200',
     trace: 'on-first-retry',

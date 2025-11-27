@@ -251,6 +251,12 @@ npm run test:ci
 
 [Playwright](https://playwright.dev/) is configured for end-to-end testing via [playwright-ng-schematics](https://github.com/nickvdyck/playwright-ng-schematics), which integrates with the Angular CLI's `ng e2e` workflow.
 
+**First-time setup:** Install the browser binaries before running e2e tests:
+
+```sh
+npm run e2e:installbrowsers
+```
+
 To run e2e tests (Chromium only, for fast local development):
 
 ```sh

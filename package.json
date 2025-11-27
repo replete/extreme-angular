@@ -26,7 +26,8 @@
     "shove": "git config push.autoSetupRemote true && git add . && git commit -m 'wip: shoved' --no-verify && git push --no-verify",
     "prepare": "husky",
     "e2e": "ng e2e",
-    "e2e:all": "ng e2e --configuration=all"
+    "e2e:all": "ng e2e --configuration=all",
+    "e2e:installbrowsers": "npx playwright install"
   },
   "private": true,
   "dependencies": {
